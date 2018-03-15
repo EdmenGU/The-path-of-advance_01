@@ -21,7 +21,7 @@ namespace MyMVC_Project1.Controllers
 
         public ActionResult index2()
         {
-            SkyZenTask task = skyZenTaskService.GetSkyTaskList(new SkyZenTask() { id = 1000 });
+            SkyZenTask task = skyZenTaskService.GetSkyTaskList(new SkyZenTask() { id = 10086 });
 
             return View(task);
         }

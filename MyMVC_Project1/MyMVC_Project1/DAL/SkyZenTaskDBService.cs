@@ -19,11 +19,16 @@ namespace MyMVC_Project1.DAL
                 MySqlParameter[] map = new MySqlParameter[] {
                     new MySqlParameter("@id",task.id)
                 };
+                MySqlCommand cmd = new MySqlCommand(sql,conn);
+                cmd.Parameters.AddRange(map);
                 conn.Open();
                 try
                 {
-                    MySqlDataReader read = MySqlHelper.ExecuteReader(conn, sql, map);
-                    datatable.Load(read);
+                    //READ方式连接
+                    //MySqlDataReader read = MySqlHelper.ExecuteReader(conn, sql, map);
+                    //MySqlDataAdapter方式
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    adapter.Fill(datatable);
                 }
                 catch (Exception e)
                 {
