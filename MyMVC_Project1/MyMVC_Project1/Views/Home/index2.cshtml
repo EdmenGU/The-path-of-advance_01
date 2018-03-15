@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "架构之路测试页面";
+
+}
+@model MyMVC_Project1.Models.SkyZenTask
+
+<h2>架构之路测试页面</h2>
+
+<style>
+    .tittle {
+        font-size: 25px;
+        color: orangered;
+        text-align:center;
+    }
+</style>
+
+<div>
+    <h3 class="tittle">天禅流程任务清单</h3>
+    <div>
+        <table width="100%" border="1">
+            <thead>
+                <tr>
+                    <th>任务名称</th>
+                    <th>任务描述</th>
+                    <th>完成人员</th>
+                    <th>迭代名称</th>
+                    <th>任务估时</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.TaskName</td>
+                    <td>@Model.TaskDesc</td>
+                    <td>@Model.TaskOwnerCount</td>
+                    <td>@Model.TaskIterationName</td>
+                    <td>@Model.TaskEstimate</td>
+                    <td>@Model.taskBeginDat</td>
+                    <td>@Model.taskEndDate</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

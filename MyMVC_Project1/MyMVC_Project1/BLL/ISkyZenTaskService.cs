@@ -9,6 +9,6 @@ namespace MyMVC_Project1.BLL
 {
    public interface ISkyZenTaskService
     {
-        ResponseModel<SkyZenTask> GetSkyTaskList(SkyZenTask task);
+        SkyZenTask GetSkyTaskList(SkyZenTask task);
     }
 }

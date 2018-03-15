@@ -10,31 +10,27 @@ namespace MyMVC_Project1.BLL
 {
     public class SkyZenTaskService : ISkyZenTaskService
     {
-        SkyZenTaskDBService skyZenTaskDBService = new SkyZenTaskDBService();
+        /// <summary>
+        /// 创建一个私有的(只在本类中可以使用) 只读的 
+        /// </summary>
+      private readonly ISkyZenTaskDBService skyZenTaskDBService = new SkyZenTaskDBService();
 
-        public ResponseModel<SkyZenTask> GetSkyTaskList(SkyZenTask task)
+        public SkyZenTask GetSkyTaskList(SkyZenTask task)
         {
-            ResponseModel<SkyZenTask> respon = new ResponseModel<SkyZenTask>();
             SkyZenTask skyZenTask = new SkyZenTask();
             DataTable datatable = new DataTable();
             try
             {
                 datatable = skyZenTaskDBService.GetSkyTaskList(task);
-                for (int i = 0; i < datatable.Rows.Count; i++)
-                {
-                    var row = datatable.Rows[i];
-                    skyZenTask.id = int.Parse(row[0].ToString());
-                }
-                respon.code = (int)ResponseCode.Success;
-                respon.resultInfo = skyZenTask;
+                skyZenTask = DataTableToModel.ToSingleModel<SkyZenTask>(datatable);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                throw e;
             }
-            return respon;
+            return skyZenTask;
 
         }
+
     }
 }
