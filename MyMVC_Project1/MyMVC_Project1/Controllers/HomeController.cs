@@ -25,5 +25,16 @@ namespace MyMVC_Project1.Controllers
 
             return View(task);
         }
+
+        public ActionResult index3()
+        {
+            return View();
+        }
+
+        public JsonResult GetTaskInfo(int taskId)
+        {
+            SkyZenTask task = skyZenTaskService.GetSkyTaskList(new SkyZenTask() { id = taskId });
+            return Json(new { data = task }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
